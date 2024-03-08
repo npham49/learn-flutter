@@ -42,6 +42,7 @@ class TodoList extends ChangeNotifier {
       desc: newDesc,
     );
     _state = _state.copyWith(todos: [..._state.todos, newTodo]);
+    print(_state.todos);
     notifyListeners();
   }
 
