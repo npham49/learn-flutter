@@ -20,12 +20,41 @@ class _TodosPageState extends State<TodosPage> {
             padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 40),
             child: Center(
               child: Column(
-                children: [TodoHeader(), CreateTodo()],
+                children: [TodoHeader(), CreateTodo(),SizedBox(height:20.0),SearchAndFilterTodo()],
               ),
             ),
           ),
         ),
       ),
+    );
+  }
+}
+
+class SearchAndFilterTodo extends StatelessWidget {
+  const SearchAndFilterTodo({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children:[
+        TextField(
+          decoration: InputDecoration(
+            hintText: 'Search todo',
+            suffixIcon: Icon(Icons.search),
+            filled: true
+          ),
+          onChanged: (String? newSearchTerm){
+            if (newSearchTerm != null) {
+              context.read<TodoSearch>().changeSearchTerm(newSearchTerm);
+            }
+          },
+        ),
+        SizedBox(height: 20),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [],
+        )
+      ]
     );
   }
 }

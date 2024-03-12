@@ -36,6 +36,7 @@ class TodoSearch extends ChangeNotifier {
 
   void changeSearchTerm(String newSearchTerm) {
     _state = _state.copyWith(searchTerm: newSearchTerm);
+    print(_state.searchTerm);
     notifyListeners();
   }
 }
